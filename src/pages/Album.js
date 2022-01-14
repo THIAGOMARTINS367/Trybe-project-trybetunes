@@ -6,6 +6,7 @@ class Album extends Component {
     return (
       <div data-testid="page-album">
         <Header dataTestId="header-component" />
+        <span>Este é Albúm</span>
       </div>
     );
   }

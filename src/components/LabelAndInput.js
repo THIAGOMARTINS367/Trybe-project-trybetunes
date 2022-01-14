@@ -8,17 +8,19 @@ class LabelAndInput extends Component {
       inputName,
       inputValue,
       inputID,
+      placeholderContent,
       onChangeEvent,
       dataTestId,
     } = this.props;
     return (
       <section>
-        <label htmlFor={ inputID }>{ labelContent }</label>
+        <label htmlFor={ inputID }>{ labelContent }</label> <br />
         <input
           type={ inputType }
           name={ inputName }
           value={ inputValue }
           id={ inputID }
+          placeholder={ placeholderContent }
           onChange={ onChangeEvent }
           data-testid={ dataTestId }
         />
