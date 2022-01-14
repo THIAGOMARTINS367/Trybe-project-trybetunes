@@ -8,20 +8,20 @@ class Header extends Component {
 
     this.state = {
       user: '',
+      searching: false,
     };
-
-    this.fetch = this.fetch.bind(this);
   }
 
-  async fetch() {
-    const data = await getUser();
-    this.setState({ user: data });
+  componentDidMount() {
+    this.setState({ searching: true, }, async () => {
+      const data = await getUser();
+      this.setState({ user: data,  searching: false });
+    });
   }
 
   render() {
     const { dataTestId } = this.props;
     const { user } = this.state;
-    this.fetch();
     return (
       <header data-testid={ dataTestId }>
         {user === '' ? (
