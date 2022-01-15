@@ -101,8 +101,8 @@ class Search extends Component {
               }
               {
                 dataOfArtistOrBand.map((element) => (
-                  <section>
-                    <ul key={`${element.collectionName}_${element.collectionId}`}>
+                  <section key={`${element.collectionName}_${element.collectionId}`}>
+                    <ul>
                       <li>{element.collectionId}</li>
                       <li>{element.collectionName}</li>
                       <Link to={`/album/${element.collectionId}`} data-testid={`link-to-album-${element.collectionId}`}>
