@@ -4,7 +4,7 @@ class GenericButton extends Component {
   render() {
     const { buttonContent, onClickEvent, disabledButton, dataTestId } = this.props;
     return (
-      <>
+      <div>
         {
           disabledButton ? (
             <button
@@ -21,7 +21,7 @@ class GenericButton extends Component {
             </button>
           )
         }
-      </>
+      </div>
     );
   }
 }

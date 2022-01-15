@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-import LabelAndInput from '../components/LabelAndInput';
 import { getUser } from '../services/userAPI';
 
 class Profile extends Component {
@@ -9,7 +8,7 @@ class Profile extends Component {
     super();
 
     this.state = {
-      profileData: '',
+      profileData: {},
       searching: false,
     }
   }
@@ -24,7 +23,6 @@ class Profile extends Component {
   render() {
     const { searching, profileData } = this.state;
     const { name, email, image, description  } = profileData;
-    console.log(profileData);
     return (
       <div data-testid="page-profile">
         <Header dataTestId="header-component" />

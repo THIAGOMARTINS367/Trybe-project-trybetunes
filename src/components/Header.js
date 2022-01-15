@@ -8,15 +8,15 @@ class Header extends Component {
 
     this.state = {
       user: '',
-      searching: false,
     };
   }
 
   componentDidMount() {
-    this.setState({ searching: true, }, async () => {
+    const searchingUser = async () => {
       const data = await getUser();
-      this.setState({ user: data,  searching: false });
-    });
+      this.setState({ user: data });
+    };
+    searchingUser();
   }
 
   render() {
