@@ -2,7 +2,7 @@ import { element } from 'prop-types';
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import getMusics from '../services/musicsAPI';
 
 class Album extends Component {
@@ -15,11 +15,7 @@ class Album extends Component {
       searching: false,
     }
     this.saveFavoriteSongs = this.saveFavoriteSongs.bind(this);
-    this.tickCheckboxForFavoriteSongs = this.tickCheckboxForFavoriteSongs.bind(this);
-  }
-
-  tickCheckboxForFavoriteSongs() {
-    
+    this.updateFavoriteSongsList = this.updateFavoriteSongsList.bind(this);
   }
 
   componentDidMount() {
@@ -49,6 +45,13 @@ class Album extends Component {
     });
   }
 
+  updateFavoriteSongsList() {
+    this.setState({ searching: true }, async () => {
+      const dataFavoriteSongs = await getFavoriteSongs();
+      this.setState({ searching: false,  favoriteSongs: dataFavoriteSongs });
+    });
+  }
+
   saveFavoriteSongs({ target }) {
     const { name, checked } = target;
     const { albumSongPreview, favoriteSongs } = this.state;
@@ -61,21 +64,19 @@ class Album extends Component {
     });
     albumSongPreview.map((element) => {
       if (
-        checked === true
-        && isFavorited === false
-        && element.trackId === trackId
+        checked === true &&
+        isFavorited === false &&
+        element.trackId === trackId
       ) {
-        this.setState(
-          (prevState) => ({
-            favoriteSongs: [...prevState.favoriteSongs, element],
-            searching: true,
-          }),
-          () => {
-            console.log(element)
-            addSong(element);
-            this.setState({ searching: false });
-          }
-        );
+        this.setState({ searching: true }, () => {
+          addSong(element);
+          this.setState({ searching: false }, () =>
+            this.updateFavoriteSongsList()
+          );
+        });
+      } else if (isFavorited && element.trackId === trackId) {
+        removeSong(element);
+        this.updateFavoriteSongsList();
       }
     });
   }
@@ -109,8 +110,8 @@ class Album extends Component {
             <div>Carregando...</div>
           ) : (
             <MusicCard
-              albumSongPreview={albumSongPreview.slice(1)}
-              funcSaveFavoriteSongsInState={this.saveFavoriteSongs}
+              playlist={albumSongPreview.slice(1)}
+              functionForOnClickEvent={this.saveFavoriteSongs}
             />
           )
         }
