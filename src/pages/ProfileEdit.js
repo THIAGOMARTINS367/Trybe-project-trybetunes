@@ -1,17 +1,16 @@
-import React, { Component } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import GenericButton from "../components/GenericButton";
-import Header from "../components/Header";
-import LabelAndInput from "../components/LabelAndInput";
-import { getUser, updateUser } from "../services/userAPI";
-import Profile from "./Profile";
+import React, { Component } from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import GenericButton from '../components/GenericButton';
+import Header from '../components/Header';
+import LabelAndInput from '../components/LabelAndInput';
+import { getUser, updateUser } from '../services/userAPI';
+import Profile from './Profile';
 
 class ProfileEdit extends Component {
   constructor() {
     super();
 
     this.state = {
-      profileData: {},
       searching: false,
       disabledButton: true,
       newName: '',
@@ -25,18 +24,20 @@ class ProfileEdit extends Component {
   }
 
   componentDidMount() {
-    this.setState({ searching: true }, async () => {
+    const func = async () => {
+      this.setState({ searching: true });
       const userProfileData = await getUser();
       const { name, email, image, description } = userProfileData;
       this.setState({
         searching: false,
-        profileData: userProfileData,
         newName: name,
         newEmail: email,
         newImage: image,
         newDescription: description,
       });
-    });
+      this.setState({ searching: false });
+    };
+    func();
   }
 
   saveEditedProfileDataInState({ target }) {
@@ -52,11 +53,11 @@ class ProfileEdit extends Component {
       validateEmailFormat = defaultEmailFormat.test(newEmail); // <--- https://www.horadecodar.com.br/2020/09/07/expressao-regular-para-validar-e-mail-javascript-regex
     }
     const validation = [
-      typeof newName === "string" && newName.length > 0,
-      typeof newEmail === "string" && newEmail.length > 0,
+      typeof newName === 'string' && newName.length > 0,
+      typeof newEmail === 'string' && newEmail.length > 0,
       typeof newImage === 'string' && newImage.length > 0,
       typeof newDescription === 'string' && newDescription.length > 0,
-      validateEmailFormat
+      validateEmailFormat,
     ];
     if (validation.includes(false)) {
       this.setState({ disabledButton: true });
@@ -78,7 +79,7 @@ class ProfileEdit extends Component {
       email: newEmail,
       image: newImage,
       description: newDescription,
-    }
+    };
     this.setState({ searching: true }, () => {
       updateUser(newProfileData);
       this.setState({ searching: false, redirect: true });
