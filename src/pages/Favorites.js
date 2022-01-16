@@ -10,24 +10,29 @@ class Favorites extends Component {
     this.state = {
       favoriteSongs: [],
       searching: false,
-    }
+    };
     this.removeMusicFromFavorites = this.removeMusicFromFavorites.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ searching: true }, async () => {
+    const func = async () => {
+      this.setState({ searching: true });
       const dataFavoriteSongs = await getFavoriteSongs();
-      this.setState({ searching: false,  favoriteSongs: dataFavoriteSongs });
-    });
+      this.setState({ searching: false, favoriteSongs: dataFavoriteSongs });
+    };
+    func();
   }
 
   componentDidUpdate() {
     const { favoriteSongs } = this.state;
     favoriteSongs.map((element) => {
-        const checkboxMusicCard = document.querySelector(`#checkboxFavorite-${element.trackId}`);
-        if (checkboxMusicCard) {
-          checkboxMusicCard.checked = true;
-        }
+      const checkboxMusicCard = document.querySelector(
+        `#checkboxFavorite-${element.trackId}`,
+      );
+      if (checkboxMusicCard) {
+        checkboxMusicCard.checked = true;
+      }
+      return '';
     });
   }
 
@@ -40,9 +45,10 @@ class Favorites extends Component {
         this.setState({ searching: true }, async () => {
           removeSong(element);
           const dataFavoriteSongs = await getFavoriteSongs();
-          this.setState({ searching: false,  favoriteSongs: dataFavoriteSongs });
+          this.setState({ searching: false, favoriteSongs: dataFavoriteSongs });
         });
       }
+      return '';
     });
   }
 
@@ -56,8 +62,8 @@ class Favorites extends Component {
             <div>Carregando...</div>
           ) : (
             <MusicCard
-              playlist={favoriteSongs}
-              functionForOnClickEvent={this.removeMusicFromFavorites}
+              playlist={ favoriteSongs }
+              functionForOnClickEvent={ this.removeMusicFromFavorites }
             />
           )
         }

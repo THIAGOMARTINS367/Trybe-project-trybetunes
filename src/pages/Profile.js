@@ -10,44 +10,55 @@ class Profile extends Component {
     this.state = {
       profileData: {},
       searching: false,
-    }
+    };
   }
 
   componentDidMount() {
-    this.setState({ searching: true }, async () => {
+    const func = async () => {
+      this.setState({ searching: true });
       const userProfileData = await getUser();
-      this.setState({ searching: false,  profileData: userProfileData });
-    });
+      this.setState({ searching: false, profileData: userProfileData });
+    };
+    func();
   }
 
   render() {
     const { searching, profileData } = this.state;
-    const { name, email, image, description  } = profileData;
+    const { name, email, image, description } = profileData;
     return (
       <div data-testid="page-profile">
         <Header dataTestId="header-component" />
-        {
-          searching ? (
-            <div>Carregando...</div>
-          ) : (
-            <section>
-              <div><img src={image} alt={`Imagem de ${name}`} data-testid="profile-image"/></div>
-              <p>
-                Nome: <br />
-                {name}
-              </p>
-              <p>
-                Email: <br />
-                {email}
-              </p>
-              <p>
-                Descrição: <br />
-                {description}
-              </p>
-              <Link to="/profile/edit"><button type="button">Editar perfil</button></Link>
-            </section>
-          )
-        }
+        {searching ? (
+          <div>Carregando...</div>
+        ) : (
+          <section>
+            <div>
+              <img
+                src={ image }
+                alt={ `Imagem de ${name}` }
+                data-testid="profile-image"
+              />
+            </div>
+            <p>
+              Nome:
+              <br />
+              {name}
+            </p>
+            <p>
+              Email:
+              <br />
+              {email}
+            </p>
+            <p>
+              Descrição:
+              <br />
+              {description}
+            </p>
+            <Link to="/profile/edit">
+              <button type="button">Editar perfil</button>
+            </Link>
+          </section>
+        )}
       </div>
     );
   }

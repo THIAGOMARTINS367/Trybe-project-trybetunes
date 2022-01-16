@@ -15,7 +15,7 @@ class MusicCard extends Component {
               src={ element.previewUrl }
               controls
             >
-            <track kind="captions" />
+              <track kind="captions" />
               O seu navegador não suporta o elemento audio.
             </audio>
             <LabelAndCheckbox
