@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import LabelAndCheckbox from './LabelAndCheckbox';
 
 class MusicCard extends Component {
@@ -31,5 +32,14 @@ class MusicCard extends Component {
     );
   }
 }
+
+MusicCard.propTypes = {
+  playlist: PropTypes.arrayOf(PropTypes.object).isRequired,
+  functionForOnClickEvent: PropTypes.func,
+};
+
+MusicCard.defaultProps = {
+  functionForOnClickEvent: () => '',
+};
 
 export default MusicCard;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class LabelAndCheckbox extends Component {
   render() {
@@ -25,5 +26,13 @@ class LabelAndCheckbox extends Component {
     );
   }
 }
+
+LabelAndCheckbox.propTypes = {
+  labelContent: PropTypes.string.isRequired,
+  inputName: PropTypes.string.isRequired,
+  inputID: PropTypes.string.isRequired,
+  onChangeEvent: PropTypes.func.isRequired,
+  dataTestId: PropTypes.string.isRequired,
+};
 
 export default LabelAndCheckbox;

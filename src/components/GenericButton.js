@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class GenericButton extends Component {
   render() {
@@ -25,5 +26,17 @@ class GenericButton extends Component {
     );
   }
 }
+
+GenericButton.propTypes = {
+  buttonContent: PropTypes.string.isRequired,
+  onClickEvent: PropTypes.func,
+  disabledButton: PropTypes.bool,
+  dataTestId: PropTypes.string.isRequired,
+};
+
+GenericButton.defaultProps = {
+  onClickEvent: () => '',
+  disabledButton: false,
+};
 
 export default GenericButton;

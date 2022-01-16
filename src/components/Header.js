@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 
@@ -38,5 +39,9 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  dataTestId: PropTypes.string.isRequired,
+};
 
 export default Header;
