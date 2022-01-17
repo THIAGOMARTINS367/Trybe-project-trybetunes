@@ -35,7 +35,6 @@ class ProfileEdit extends Component {
         newImage: image,
         newDescription: description,
       });
-      this.setState({ searching: false });
     };
     func();
   }

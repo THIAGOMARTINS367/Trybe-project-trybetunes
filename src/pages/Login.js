@@ -4,6 +4,7 @@ import { createUser } from '../services/userAPI';
 import GenericButton from '../components/GenericButton';
 import LabelAndInput from '../components/LabelAndInput';
 import Search from './Search';
+import MIN_NUMBER_OF_CHARACTERS from '../Constants';
 
 class Login extends Component {
   constructor() {
@@ -58,6 +59,7 @@ class Login extends Component {
               <GenericButton
                 buttonContent="Entrar"
                 onClickEvent={ this.createNewUser }
+                disabledButton={ userName.name.length < MIN_NUMBER_OF_CHARACTERS }
                 dataTestId="login-submit-button"
               />
             </form>

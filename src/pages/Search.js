@@ -45,7 +45,7 @@ class Search extends Component {
       { searching: true, artistOrBandName: temporaryDataArtistOrBandName },
       async () => {
         const data = await searchAlbumsAPI(
-          temporaryDataArtistOrBandName.toLocaleUpperCase(),
+          temporaryDataArtistOrBandName,
         );
         if (data.length === 0) {
           this.setState({ requestError: true });
