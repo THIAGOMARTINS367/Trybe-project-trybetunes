@@ -42,17 +42,17 @@ class Profile extends Component {
             <p>
               Nome:
               <br />
-              {name}
+              <span data-testid="header-user-name">{name}</span>
             </p>
             <p>
               Email:
               <br />
-              {email}
+              <span>{email}</span>
             </p>
             <p>
               Descrição:
               <br />
-              {description}
+              <span>{description}</span>
             </p>
             <Link to="/profile/edit">
               <button type="button">Editar perfil</button>

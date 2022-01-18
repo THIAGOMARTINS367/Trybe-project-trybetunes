@@ -12,7 +12,7 @@ class ProfileEdit extends Component {
 
     this.state = {
       searching: false,
-      disabledButton: true,
+      disabledButton: false,
       newName: '',
       newEmail: '',
       newImage: '',
@@ -34,7 +34,7 @@ class ProfileEdit extends Component {
         newEmail: email,
         newImage: image,
         newDescription: description,
-      });
+      }, () => this.validateChangedProfileData());
     };
     func();
   }
@@ -102,7 +102,6 @@ class ProfileEdit extends Component {
             <Route exact path="/profile" component={ Profile } />
           </Switch>
         </BrowserRouter>
-        { redirect && <Redirect exact to="/profile" />}
         <Header dataTestId="header-component" />
         {searching ? (
           <div>Carregando...</div>
@@ -145,11 +144,12 @@ class ProfileEdit extends Component {
               dataTestId="edit-input-description"
             />
             <GenericButton
-              buttonContent="Salvar Alterações"
+              buttonContent="Editar perfil"
               disabledButton={ disabledButton }
               onClickEvent={ this.saveNewProfileData }
               dataTestId="edit-button-save"
             />
+            { redirect && <Redirect exact to="/profile" />}
           </section>
         )}
       </div>
