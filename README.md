@@ -1,9 +1,3 @@
-### Termos e acordos
-
-Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.
-
----
-
 # Boas vindas ao repositório do projeto TrybeTunes!
 
 Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
@@ -20,7 +14,6 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 - [Entregáveis](#entregáveis)
   - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
   - [Desenvolvimento](#desenvolvimento)
-  - [Data de Entrega](#data-de-entrega)
 - [Instruções para entregar seu projeto](#instruções-para-entregar-seu-projeto)
   - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
   - [Durante o desenvolvimento](#durante-o-desenvolvimento)
@@ -64,8 +57,6 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   - [13. Crie a exibição de perfil](#13-crie-a-exibição-de-perfil)
 
   - [14. Crie o formulário de edição de perfil](#14-crie-o-formulário-de-edição-de-perfil)
-
-- [Avisos Finais](#avisos-finais)
 
 ---
 
@@ -123,14 +114,6 @@ Nos últimos projetos, por mais que o app tenha sido desenvolvido utilizando mú
 Uma rota define o que deve ser renderizado na página ao abrí-la. Cada rota está associada a um caminho. O caminho é a parte da URL após o domínio (nome do site, de forma simplificada). Por exemplo, em `www.site.com/projetos/meu-jogo`, o caminho é `/projetos/meu-jogo`. Até agora, todos os apps React que você desenvolveu possuíam somente uma rota, a raíz (`/`).
 
 Outra diferença importante neste projeto em relação aos anteriores é que você irá consumir e enviar dados para APIs para pesquisar a banda ou artista, recuperar as músicas de cada álbum e salvar as músicas favoritas, além de editar as informações da pessoa logada. Dessa forma, você terá que lidar com requisições assíncronas e promises. Também deverá fazer uso dos métodos de ciclo de vida (lifecycle methods) e de estados para controlar o que é renderizado por seus componentes dependendo do momento em que as requisições se encontram.
-
-## Data de Entrega
-
-  - Projeto individual.
-
-  - Serão `2` dias de projeto.
-  
-  - Data de entrega para avaliação final do projeto: `21/01/2022 - 14:00h`.
 
 ---
 
@@ -734,15 +717,3 @@ Crie o formulário de edição de perfil dentro do componente `ProfileEdit`, que
 - Será validado se as informações são enviadas usando a API `updateUser`;
 
 - Será validado se após salvar as informações a pessoa é redirecionada para a página de exibição de perfil.
-
----
-
-# Avisos Finais
-
-Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência preenchendo o formulário. Leva menos de 3 minutos!
-
-Link: [FORMULÁRIO DE AVALIAÇÃO DE PROJETO](https://bit.ly/2OfLJPn)
-
-O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no readme. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok?
-
----
